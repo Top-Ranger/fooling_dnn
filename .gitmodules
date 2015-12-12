@@ -1,3 +1,9 @@
 [submodule "caffe"]
 	path = caffe
 	url = git@github.com:BVLC/caffe.git
+[submodule "qnn"]
+	path = qnn
+	url = git@bitbucket.org:Top-Ranger/qnn.git
+[submodule "qnn-image-generators"]
+	path = qnn-image-generators
+	url = git@bitbucket.org:Top-Ranger/qnn-image-generators.git
