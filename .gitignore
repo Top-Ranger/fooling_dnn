@@ -1,0 +1,7 @@
+*.qm
+*.user
+*.user.*
+*.so
+*.so.*
+*.a
+*.dll
