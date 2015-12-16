@@ -18,14 +18,13 @@ public:
 
 private slots:
     void on_actionQuit_triggered();
-
     void on_actionAbout_triggered();
-
     void on_actionAbout_Qt_triggered();
-
     void on_pushButton_clicked();
 
 private:
+    void enableUiActions(bool enabled);
+
     Ui::FoolingDNN *ui;
     QStringListModel *_model;
 };
