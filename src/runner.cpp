@@ -33,3 +33,8 @@ void GARunner::getProgress(qint32 progress, qint32 max, double, double)
     ui->progressBar->setMaximum(max);
     ui->progressBar->setValue(progress);
 }
+
+void GARunner::getFinished(double, double, qint32)
+{
+    close();
+}
