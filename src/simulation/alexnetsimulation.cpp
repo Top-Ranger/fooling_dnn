@@ -104,7 +104,7 @@ double AlexNetSimulation::_getScore()
     float max = -1;
     _class = -1;
 
-    for(quint32 i = 0; i < result.size(); ++i)
+    for(qint32 i = 0; i < result[0]->count(); ++i)
     {
         if(result[0]->cpu_data()[i] > max)
         {

@@ -12,7 +12,7 @@ class FinalImage : public QDialog
     Q_OBJECT
 
 public:
-    explicit FinalImage(QImage image, double confidence, QWidget *parent = 0);
+    explicit FinalImage(QImage image, double confidence, QString class_string, QWidget *parent = 0);
     ~FinalImage();
 
 private slots:

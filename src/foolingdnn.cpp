@@ -92,19 +92,19 @@ void FoolingDNN::on_pushButton_clicked()
         return;
     }
 
-    GenericSimulation *simulation = new AlexNetSimulation();
+    AlexNetSimulation *simulation = new AlexNetSimulation();
     GenericGeneticAlgorithm *ga = new NonParallelCuckooSearch(network, simulation);
 
     GARunner runner(ga, this);
     runner.exec();
 
     GenericGene *gene = ga->bestGene();
-    network->initialise(gene);
-    network->processInput(QList<double>());
+    simulation->initialise(network, gene);
+    simulation->getScore();
 
     QImage image("./image.png");
 
-    FinalImage window(image, ga->bestFitness(), this);
+    FinalImage window(image, ga->bestFitness(), QString("%1").arg(simulation->getClass()), this);
     window.exec();
 
     // Cleanup
