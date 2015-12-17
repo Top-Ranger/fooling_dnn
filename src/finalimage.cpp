@@ -5,7 +5,8 @@
 
 FinalImage::FinalImage(QImage image, double confidence, QString class_string, QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::FinalImage)
+    ui(new Ui::FinalImage),
+    _image(image)
 {
     ui->setupUi(this);
     ui->confidence->setText(QString("%1").arg(confidence));
@@ -26,11 +27,6 @@ void FinalImage::on_pushButton_clicked()
     QString saveTo = QFileDialog::getSaveFileName(this);
     if(saveTo != "")
     {
-
-        QImage image;
-        QPainter painter(&image);
-        painter.setRenderHint(QPainter::SmoothPixmapTransform);
-        ui->graphicsView->scene()->render(&painter);
-        image.save(saveTo);
+        _image.save(saveTo);
     }
 }

@@ -2,6 +2,7 @@
 #define FINALIMAGE_H
 
 #include <QDialog>
+#include <QImage>
 
 namespace Ui {
 class FinalImage;
@@ -20,6 +21,7 @@ private slots:
 
 private:
     Ui::FinalImage *ui;
+    QImage _image;
 };
 
 #endif // FINALIMAGE_H
