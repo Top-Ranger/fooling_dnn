@@ -23,8 +23,6 @@ private slots:
     void on_pushButton_clicked();
 
 private:
-    void enableUiActions(bool enabled);
-
     Ui::FoolingDNN *ui;
     QStringListModel *_model;
 };

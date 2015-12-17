@@ -56,7 +56,6 @@ void FoolingDNN::on_actionAbout_Qt_triggered()
 
 void FoolingDNN::on_pushButton_clicked()
 {
-    enableUiActions(false);
     QString selection = ui->listView->currentIndex().data().toString();
 
     AbstractNeuralNetwork *network = NULL;
@@ -66,7 +65,6 @@ void FoolingDNN::on_pushButton_clicked()
         QMessageBox::warning(this,
                              tr("Select generation mode"),
                              tr("Please select an image generation mode"));
-        enableUiActions(true);
         return;
     }
     else if(selection == "Direct encoding")
@@ -90,7 +88,6 @@ void FoolingDNN::on_pushButton_clicked()
         QMessageBox::critical(this,
                               tr("Unknown selection"),
                               QString(tr("Unknown selection: '%1'.")).arg(selection));
-        enableUiActions(true);
         return;
     }
 
@@ -98,9 +95,7 @@ void FoolingDNN::on_pushButton_clicked()
     GenericGeneticAlgorithm *ga = new NonParallelCuckooSearch(network, simulation);
 
     GARunner runner(ga, this);
-    runner.show();
-    runner.waitFinished();
-    runner.close();
+    runner.exec();
 
     GenericGene *gene = ga->bestGene();
     network->initialise(gene);
@@ -109,17 +104,9 @@ void FoolingDNN::on_pushButton_clicked()
     QImage image("./image.png");
 
     FinalImage window(image, ga->bestFitness(), this);
-    window.show();
+    window.exec();
 
     // Cleanup
     delete gene;
     delete network;
-
-    enableUiActions(true);
-}
-
-void FoolingDNN::enableUiActions(bool enabled)
-{
-    ui->pushButton->setEnabled(enabled);
-    ui->actionQuit->setEnabled(enabled);
 }

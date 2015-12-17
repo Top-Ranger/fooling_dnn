@@ -18,10 +18,9 @@ public:
     explicit GARunner(GenericGeneticAlgorithm *ga, QWidget *parent = 0);
     ~GARunner();
 
-    void waitFinished();
-
 private slots:
     void getProgress(qint32 progress, qint32 max, double, double);
+    void getFinished(double, double, qint32);
 
 private:
     Ui::Runner *ui;

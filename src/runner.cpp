@@ -19,20 +19,13 @@ GARunner::GARunner(GenericGeneticAlgorithm *ga, QWidget *parent) :
     ui->progressBar->setValue(0);
 
     QObject::connect(ga, SIGNAL(ga_current_round(qint32,qint32,double,double)), this, SLOT(getProgress(qint32,qint32,double,double)));
+    QObject::connect(ga, SIGNAL(ga_finished(double,double,qint32)), this, SLOT(getFinished(double,double,qint32)));
    _future = QtConcurrent::run(runGa, ga);
 }
 
 GARunner::~GARunner()
 {
     delete ui;
-}
-
-void GARunner::waitFinished()
-{
-    while(!_future.isFinished())
-    {
-        QCoreApplication::processEvents();
-    }
 }
 
 void GARunner::getProgress(qint32 progress, qint32 max, double, double)
