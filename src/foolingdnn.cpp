@@ -81,6 +81,7 @@ void FoolingDNN::on_pushButton_clicked()
         config.image_path = "./image.png";
         config.width = 227;
         config.height = 227;
+        config.max_size = 50;
         network = new ImageCPPNGeneratorNetwork(0, 0, config);
     }
     else
