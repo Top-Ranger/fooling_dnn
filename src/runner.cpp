@@ -28,10 +28,12 @@ GARunner::~GARunner()
     delete ui;
 }
 
-void GARunner::getProgress(qint32 progress, qint32 max, double, double)
+void GARunner::getProgress(qint32 progress, qint32 max, double best, double average)
 {
     ui->progressBar->setMaximum(max);
     ui->progressBar->setValue(progress);
+    ui->fitness->setText(QString("%1").arg(best, 8));
+    ui->a_fitness->setText(QString("%1").arg(average, 8));
 }
 
 void GARunner::getFinished(double, double, qint32)

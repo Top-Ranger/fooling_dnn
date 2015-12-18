@@ -19,7 +19,7 @@ public:
     ~GARunner();
 
 private slots:
-    void getProgress(qint32 progress, qint32 max, double, double);
+    void getProgress(qint32 progress, qint32 max, double  best, double average);
     void getFinished(double, double, qint32);
 
 private:
