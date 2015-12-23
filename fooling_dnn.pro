@@ -31,6 +31,9 @@ FORMS    += src/foolingdnn.ui \
     src/finalimage.ui \
     src/runner.ui
 
+OTHER_FILES += \
+    LICENSE.GPL3
+
 # Kubuntu serach for HDF5
 INCLUDEPATH += /usr/include/hdf5/serial
 DEPENDPATH += /usr/include/hdf5/serial
