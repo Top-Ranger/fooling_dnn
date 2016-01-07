@@ -1,0 +1,30 @@
+fooling_snn
+   by Marcus Soll
+
+-------------------------------------------------------------------------------
+
+A tool which creates fooling images for a deep neural network (AlexNet [1])
+using the Caffe framework[2].
+
+Usage:
+ - Put file 'deploy.prototxt' with network description in the working 
+   directory. The first input dimension must be 1.
+ - Put file 'bvlc_alexnet.caffemodel' with trained layer in working directory.
+ - Only one instance of the program may run in a single working directory at
+   any given time.
+ 
+fooling_snn is licensed under the terms of the GNU General Public License
+Version 3 or (at your option) any later version.
+
+-------------------------------------------------------------------------------
+
+References:
+[1] Alex Krizhevsky, Ilya Sutskever, and Geoffrey E. Hinton. 2012. ImageNet 
+    Classification with Deep Convolutional Neural Networks. In Advances in 
+    Neural Information Processing Systems 25, P. Bartlett, F.c.n. Pereira, 
+    C.j.c. Burges, L. Bottou, and K.q. Weinberger (Eds.).
+
+[2] Yangqing Jia, Evan Shelhamer, Jeff Donahue, Sergey Karayev, Jonathan Long,
+    Ross B. Girshick, Sergio Guadarrama, and Trevor Darrell. 2014. Caffe: 
+    Convolutional Architecture for Fast Feature Embedding. 
+    CoRR abs/1408.5093 (2014). http://arxiv.org/abs/1408.5093
