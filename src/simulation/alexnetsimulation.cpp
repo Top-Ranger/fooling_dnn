@@ -49,7 +49,7 @@ qint32 AlexNetSimulation::needOutputLength()
     return 0;
 }
 
-GenericSimulation *AlexNetSimulation::createConfigCopy()
+AbstractSimulation *AlexNetSimulation::createConfigCopy()
 {
     return new AlexNetSimulation(_config);
 }

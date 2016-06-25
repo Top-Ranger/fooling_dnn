@@ -19,7 +19,7 @@
 #ifndef ALEXNETSIMULATION_H
 #define ALEXNETSIMULATION_H
 
-#include <simulation/genericsimulation.h>
+#include <simulation/abstractsimulation.h>
 
 #include <caffe/caffe.hpp>
 #include <caffe/util/io.hpp>
@@ -27,7 +27,7 @@
 #include <string>
 #include <QMutex>
 
-class AlexNetSimulation : public GenericSimulation
+class AlexNetSimulation : public AbstractSimulation
 {
 public:
     struct config {
@@ -48,7 +48,7 @@ public:
 
     qint32 needInputLength();
     qint32 needOutputLength();
-    GenericSimulation *createConfigCopy();
+    AbstractSimulation *createConfigCopy();
 
     qint32 getClass();
 
