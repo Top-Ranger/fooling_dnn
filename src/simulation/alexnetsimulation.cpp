@@ -63,12 +63,12 @@ void AlexNetSimulation::_initialise()
 {
     _network->initialise(_gene);
 
-    Caffe::set_mode(Caffe::CPU);
-    Caffe::set_phase(Caffe::TEST);
-
     _mutex->lock();
     if(_alexnet == NULL)
     {
+        Caffe::set_mode(Caffe::CPU);
+        Caffe::set_phase(Caffe::TEST);
+
         _alexnet = new Net<float>(_config.proto_path.c_str());
         _alexnet->CopyTrainedLayersFrom(_config.caffemodel_path.c_str());
     }
@@ -77,6 +77,8 @@ void AlexNetSimulation::_initialise()
 
 double AlexNetSimulation::_getScore()
 {
+    _mutex->lock();
+
     // Read image
     _network->processInput(QList<double>());
 
@@ -112,11 +114,9 @@ double AlexNetSimulation::_getScore()
     std::vector<Blob<float>*> v;
     v.push_back(blob);
 
-    _mutex->lock();
     // Calculate result
     float f = 0.0;
     const vector<Blob<float>*>& result = _alexnet->Forward(v, &f);
-    _mutex->unlock();
 
     // Find maximum
     float max = -1;
@@ -134,6 +134,7 @@ double AlexNetSimulation::_getScore()
     // Clean up
     v.clear();
     delete blob;
+    _mutex->unlock();
 
     // Score = confidence = maximum output
     return max;
