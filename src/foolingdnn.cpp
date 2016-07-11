@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 Marcus Soll
+ * Copyright (C) 2015,2016 Marcus Soll
  * This file is part of fooling_dnn.
  *
  * fooling_dnn is free software: you can redistribute it and/or modify
@@ -25,7 +25,7 @@
 #include <QMessageBox>
 #include <QStringList>
 
-#include <ga/nonparallelcuckoosearch.h>
+#include <ga/cuckoosearch.h>
 #include "simulation/alexnetsimulation.h"
 #include <network/abstractneuralnetwork.h>
 #include <network/imagedirectencodinggeneratornetwork.h>
@@ -111,7 +111,7 @@ void FoolingDNN::on_pushButton_clicked()
     }
 
     AlexNetSimulation *simulation = new AlexNetSimulation();
-    GenericGeneticAlgorithm *ga = new NonParallelCuckooSearch(network, simulation, 300, 0.99, 500);
+    GenericGeneticAlgorithm *ga = new CuckooSearch(network, simulation, 300, 0.99, 500);
 
     GARunner runner(ga, this);
     runner.exec();
